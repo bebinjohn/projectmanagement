@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import {Card,CardBody,CardHeader,CardSubtitle,CardText,CardFooter} from 'reactstrap';
+import {Card,CardBody,CardHeader,CardText,CardFooter} from 'reactstrap';
 const project=(props)=>{
     
     if(props.data!==undefined)

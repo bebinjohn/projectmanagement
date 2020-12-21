@@ -9,8 +9,10 @@ const Projectreducer=(state=init,action)=>{
     switch (action.type){
         case "ADD_PROJECT":{
             //console.log(action.project)
+            break;
             
         }
+        default:return state;
     }
     return state;
 }

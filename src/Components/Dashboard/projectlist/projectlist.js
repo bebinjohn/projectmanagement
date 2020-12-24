@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import {Card,CardBody,CardHeader,CardText,CardFooter} from 'reactstrap';
+import {connect} from 'react-redux'
+import {Card,CardBody,CardHeader,Button} from 'reactstrap';
+import '../../Auth/Login.css';
+import {delepro} from '../../Redux/store/actions/projectaction';
+import './spinner.css';
 const project=(props)=>{
     
+    const dele=(id)=>{
+        console.log("I am clicked")
+        props.delete(id);
+    }
     if(props.data!==undefined)
     {
         //console.log(props.user);
@@ -11,27 +19,36 @@ const project=(props)=>{
         if(d.b_id===props.id){
         const date=moment(d.date.toDate().toString()).calendar();
         return(
-            <div key={d.id}className="col-sm-6" >
-                <Link to={"/project"+d.id} style={{
+            <div key={d.id} className=" mt-5 ml-4 "  >
+                <div >
+                    <Card className="card">
+                        <Link to={"/project"+d.id} style={{
                     textDecoration:"none",
                     color:"black"
-                }}>
-        <Card style={{height:"150px"}}>
-        <CardHeader>
-                {d.Title}
-            </CardHeader>
-            <CardBody>
-                <CardText>
-                {d.content}
-                </CardText>
-            </CardBody>
-            <CardFooter>
-                   posted by: {d.Name}
-                   <br></br>
-                   {date}
-                </CardFooter>
-        </Card>
-        </Link>
+                }} >
+                    <CardHeader style={{fontFamily:"Lobster",fontSize:"20px",textAlign:"center"}}>
+                        {d.Title}
+                    </CardHeader>
+                    <CardBody style={{fontFamily:"cursive"}}>
+                        {d.content}
+                    </CardBody>
+
+                        </Link>
+                     <hr>
+                            </hr>
+                            <div className="container">
+                            <div className="row">
+                                <div style={{fontFamily:"Lobster",fontSize:"18px"}} className="col-12 col-sm-12 col-lg-5">
+                                {date} 
+                                </div> 
+                                <div className="col-lg-7  pro-mar">
+                            <Button   color="info"><Link style={{textDecoration:"none",color:"white",fontFamily:"Candal"}} to={"/update"+d.id}>update</Link></Button>
+                            <Button style={{fontFamily:"Candal"}} className="ml-3" onClick={()=> dele(d.id)} color="danger">Delete</Button>
+                            </div>
+                            </div>
+                            </div>
+                    </Card>
+        </div>
         </div>
         )
             }
@@ -47,9 +64,17 @@ const project=(props)=>{
 
     
 }
-else return <div>
-    loading...
+else return <div className="spinner" >
+   <div className="lds-roller" >
+<div>
+    <div></div><div></div><div></div><div></div>
+</div>
+</div>
 </div>
 }
-
-export default project;
+const MapDispatchToProps=(dispatch)=>{   
+    return{
+    delete:(id)=>dispatch(delepro(id))
+    }
+}
+export default connect(null,MapDispatchToProps) (project);

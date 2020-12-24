@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import {Form,Input,FormGroup,Col,Label,Button} from 'reactstrap';
+import {Form,Input,FormGroup,Col,Button} from 'reactstrap';
 import {connect}from 'react-redux';
 import {authaction} from '../Redux/store/actions/Authaction';
+import './Login.css';
  class Login extends Component {
      state={
          Email:"",
@@ -19,23 +20,25 @@ import {authaction} from '../Redux/store/actions/Authaction';
     render() {
        // console.log(this.state);
         return (
-            <div className="container">
-               
-                    <Form style={{width:"50%"}}>
-                   <FormGroup row>
-                     <Label for="Email" sm={2}>Email</Label>
+            <div className="container" >
+                   
+                    <Form  className="b col-12 ">
+                    <div style={{textAlign:"center",
+         fontSize:"30px",fontFamily:"Arbutus"}}className="mt-2">LOGIN</div>
+                   <FormGroup className="mt-5"row> 
+                     
                           <Col sm={10}>
-                            <Input type="email" required name="email" id="Email" placeholder="Enter the email" onChange={(event)=>this.userhandler(event)} />
+                            <Input style={{fontFamily:"Candal"}} className="input"type="email" required name="email" id="Email" placeholder=" Email" onChange={(event)=>this.userhandler(event)} />
                                  </Col>
                     </FormGroup>
                     <FormGroup row>
-                     <Label for="Password" sm={2}>Password</Label>
+                     
                           <Col sm={10}>
-                            <Input type="password" required name="email" id="Password" onChange={(event)=>this.userhandler(event)} placeholder="Enter the password" />
+                            <Input style={{fontFamily:"Candal"}} type="password" className="input" required name="email" id="Password" onChange={(event)=>this.userhandler(event)} placeholder="Password" />
                                  </Col>
                     </FormGroup>
-                    <FormGroup className="ml-5">
-                     <Button color="info" onClick={(event)=>this.submithandler(event)}>
+                    <FormGroup>
+                     <Button style={{fontFamily:"Candal"}} color="info" onClick={(event)=>this.submithandler(event)} className=" mt-4">
                             Submit
                         </Button>
                 

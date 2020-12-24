@@ -10,13 +10,17 @@ const signin=(props)=>{
             <NavItem >
             <Link className=" ml-2" style={{
                textDecoration:"none",
-               color:"white"
+               color:"white",
+               fontFamily:"-moz-initial",
+            fontSize:"18px"
            }} onClick={props.signout} >Logout</Link>
             </NavItem >
             <NavItem >
             <Link className=" ml-2"style={{
                textDecoration:"none",
-               color:"white"
+               color:"white",
+               fontFamily:"-moz-initial",
+            fontSize:"18px"
            }}  to="/proform">Createproject</Link>
             </NavItem>
             </React.Fragment>

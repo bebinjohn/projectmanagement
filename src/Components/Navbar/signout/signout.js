@@ -7,14 +7,18 @@ const signout=()=>{
         <NavItem >
            <Link className=" ml-2" style={{
                textDecoration:"none",
-               color:"white"
+               color:"white",
+               fontFamily:"-moz-initial",
+               fontSize:"20px"
            }} to="/login">Login</Link>
             
         </NavItem>
         <NavItem color="info" >
         <Link className=" ml-2" style={{
            textDecoration:"none",
-           color:"white"
+           color:"white",
+           fontFamily:"-moz-initial",
+           fontSize:"20px"
        }} to="/signup">Signup</Link>
         </NavItem>
         </React.Fragment>

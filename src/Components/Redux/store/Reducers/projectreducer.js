@@ -12,6 +12,12 @@ const Projectreducer=(state=init,action)=>{
             break;
             
         }
+        case "DELE_PRO":{
+            break;
+        }
+        case "UPDATE":{
+            break;
+        }
         default:return state;
     }
     return state;

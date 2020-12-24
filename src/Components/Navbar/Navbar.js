@@ -14,10 +14,16 @@ const navbar=(props)=>{
         link=<Signout/>
     }
     return(
-            <Navbar color="info" dark>
+            <Navbar dark>
                 <NavbarBrand >
-        <Link to="/">
-        Project
+        <Link 
+        to="/" style={{
+            color:"white",
+            textDecoration:"none",
+            fontFamily:"Lobster",
+            fontSize:"30px"
+        }}>
+        DashBoard
         </Link>
                 </NavbarBrand>
                 <Nav >

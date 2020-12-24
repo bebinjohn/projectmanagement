@@ -3,10 +3,11 @@ import {Form,Input,FormGroup,Col,Label,Button} from 'reactstrap';
 import {projectaction} from '../Redux/store/actions/projectaction';
 import {connect} from 'react-redux'
 import {Link,Redirect} from 'react-router-dom'
+import '../Auth/Login.css';
  class ProjectForm extends Component {
      state={
          Title:"",
-         Name:"",
+         status:"",
          content:"",
      }
      userhandler(e){
@@ -19,43 +20,53 @@ import {Link,Redirect} from 'react-router-dom'
          this.props.createpro(this.state,this.props.auth)
      }
     render() {
-        console.log("I ....")
+        //console.log("I ....")
         if(!this.props.auth) {
         return <Redirect to='/login'/>
         }
+       
        // console.log(this.state);
         return (
             <div className="container">
-               
-                    <Form style={{width:"50%"}}>
-                   <FormGroup row>
-                     <Label for="project" sm={2}>Project Title</Label>
+                    <Form className="b1" style={{height:"410px"}}>
+                    <div style={{textAlign:"center",
+            fontSize:"30px",fontFamily:"Arbutus"}}className="mt-2">PROJECT</div>
+            <div className="b2">
+                   <FormGroup row className="mt-5">
+                    
                           <Col sm={10}>
-                            <Input type="text"  name="title" id="Title" placeholder="Enter the project title" onChange={(event)=>this.userhandler(event)} />
+                            <Input type="text" style={{fontFamily:"Candal"}} className="input" name="title" id="Title" placeholder="Enter project title" onChange={(event)=>this.userhandler(event)} />
                                  </Col>
                     </FormGroup>
+                    <FormGroup row className="mt-4">
+                    <Label style={{fontFamily:"Candal"}} className="ml-4">project status:</Label>
+                         <Col>
+                         <Input type="select" name="select" id="status" style={{width:"135px"}} onChange={(event)=>this.userhandler(event)}>
+                              <option >Working</option>
+                            <option >Finished</option>
+        </Input>
+                     </Col>
+                   </FormGroup>
                     <FormGroup row>
-                     <Label for="creater" sm={2}>Project Creater</Label>
+                     <Label for="content" className="ml-4 mt-2" style={{fontFamily:"Candal"}} >Project Description</Label>
                           <Col sm={10}>
-                            <Input type="text"  name="creater" id="Name" onChange={(event)=>this.userhandler(event)} placeholder="Enter Your Name" />
+                            <Input type="textarea" style={{
+                                border:"1px solid black"
+                            }} name="content" id="content" onChange={(event)=>this.userhandler(event)} />
                                  </Col>
                     </FormGroup>
-                    <FormGroup row>
-                     <Label for="content" sm={2}>Project Description</Label>
-                          <Col sm={10}>
-                            <Input type="textarea"  name="content" id="content" onChange={(event)=>this.userhandler(event)} />
-                                 </Col>
-                    </FormGroup>
-                    <FormGroup className="ml-5">
+                    <FormGroup >
                      <Button color="info" onClick={(event)=>this.submithandler(event)}>
                             <Link to="/" style={{
                                 textDecoration:"none",
-                                color:"white"
+                                color:"white",
+                                fontFamily:"Candal"
                             }}>
                             submit</Link>
                         </Button>
                 
                 </FormGroup>
+                </div>
                     </Form>
                 </div>
             
@@ -66,7 +77,8 @@ import {Link,Redirect} from 'react-router-dom'
 const MapstateToprops=(state)=>{
     //console.log(state)
     return{
-        auth:state.authnication.auth.uid
+        auth:state.authnication.auth.uid,
+        a:state.auth
     }
 }
 const MapDispatchToProps=(dispatch)=>{

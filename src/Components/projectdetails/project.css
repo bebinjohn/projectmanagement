@@ -1,0 +1,23 @@
+.c{
+    margin-top:150px;
+     background-color: white;
+     border: 2px solid white;
+     width: 50%;
+     border-radius: 10px;
+}
+.c1{
+    width: 100%;
+    text-align: center;
+}
+.spinner {
+    margin-left: 32em;
+}
+@media (max-width:600px){
+        .c{
+            width: 80%;
+        }
+        .spinner{
+            margin-left: 10em;
+        }
+}
+

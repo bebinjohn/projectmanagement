@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Notify from './Notification/Notification'
 import Project from './projectlist/projectlist'
 import {connect} from 'react-redux';
 import {compose} from 'redux';
@@ -15,19 +14,18 @@ class  Das extends Component{
     return(
         <div className="container">
             <div className="row">
-                <div className="col-sm-3">
-                <Notify/>
-                </div>
-                <div className="offset-1 col-sm-8">
+                <div>
                 <Project data={this.props.project} id={d.uid}/ >
-                </div>
+               
                 
             </div>
         </div>
+        </div>
     )
-}}
+}
+}
 const MapstateToprops=(state)=>{
-    console.log(state);
+    console.log("s",state);
     return{
         project:state.data.ordered.project,
         auth:state.authnication.auth,
